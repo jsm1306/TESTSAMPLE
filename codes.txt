@@ -24,8 +24,13 @@ i am a so so good girllllll yooo
 
 SINDHU HERE AND I AM MAKING 5TH COMMIT, HELLO GUYS
 HOPE ATLEAST THIS WORKS NOW
-    
-       
+
+
+
+
+
+
+Sindhu's 6th commit here, hope we get along and understand the concept of merge conflict
  
         results = [(item, quantity,item.price) for item, quantity in zip(nutrition_data, quantities)]
 
@@ -34,16 +39,6 @@ HOPE ATLEAST THIS WORKS NOW
     return redirect('mains.html')
 
 
-@login_required(login_url='login')
-def score(request):#back button fn in inputsbase.html
-    name = request.session.get('name')  
-    age = request.session.get('age')     
-    nutrition_items = NutritionInfo.objects.values_list('item_name', flat=True)
-    return render(request, 'score.html', {
-        'name': name,
-        'age': age,
-        'nutrition_items': nutrition_items,
-    })
 @login_required(login_url='login')
 def bmicalc(request):#bmi calculator
     if request.method == "POST":
