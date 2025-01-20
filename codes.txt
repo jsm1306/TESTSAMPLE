@@ -22,6 +22,8 @@ hi guys   chalu edhi
 Now this is sindhu's 4th commit, and hello everyone
 i am a so so good girllllll yooo
 
+SINDHU HERE AND I AM MAKING 5TH COMMIT, HELLO GUYS
+HOPE ATLEAST THIS WORKS NOW
     
        
  
@@ -62,16 +64,3 @@ def bmicalc(request):#bmi calculator
         elif 18.5 <= val3 < 25:
             res = "Normal weight"
         elif 25 <= val3 <= 29.9:
-            res = "Overweight"
-        elif 30 <= val3 <= 34.9:
-            res = "Obesity Class 1"
-        elif 35 <= val3 <= 39.9:
-            res = "Obesity Class 2"
-        elif val3 >= 40:
-            res = "Obesity Class 3"
-        else:
-            res = "Invalid BMI"
-        BMICalculation.objects.create(weight=weight, height=height, bmi_value=val3, gender=gender, category=res)
-        return render(request, 'bmiresult.html', {'result': round(val3), 'age': age, 'gender': gender, 'category': res})
-    return render(request, 'bmical.html')
-
