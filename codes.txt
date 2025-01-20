@@ -24,6 +24,7 @@ i am a so so good girllllll yooo
 
 SINDHU HERE AND I AM MAKING 5TH COMMIT, HELLO GUYS
 HOPE ATLEAST THIS WORKS NOW
+    
 
 
 
@@ -33,7 +34,7 @@ HOPE ATLEAST THIS WORKS NOW
 Sindhu's 6th commit here, hope we get along and understand the concept of merge conflict
  
         results = [(item, quantity,item.price) for item, quantity in zip(nutrition_data, quantities)]
-
+VARSHITHA'S 5TH COMMIT -SINDHU NUVVU TRY CHEY IPPUDU
         return render(request, 'suggestresult.html', {'results': results})
 
     return redirect('mains.html')
