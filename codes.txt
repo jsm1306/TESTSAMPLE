@@ -16,23 +16,8 @@ Sindhu is doing this commit for the second time
 She is saying hello world
 
 
-
-@login_required(login_url='login')
-def suggester(request):
-    if request.method == "POST":
-        selected_items = []
-        for category, items in request.POST.items():
-            if category.startswith('item_'):
-                selected_items.append(items)  
-
-        nutrition_data = []
-        for item_name in selected_items:
-            try:
-                item = NutritionInfo.objects.get(item_name=item_name)
-                nutrition_data.append(item)
-            except NutritionInfo.DoesNotExist:
-                print(f"Item '{item_name}' does not exist in the database.")
-        requirements = daily(request)
+hi guys   chalu edhi
+    
         A = [
             [-item.calories for item in nutrition_data],
             [-item.proteins for item in nutrition_data],
