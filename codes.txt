@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+hello varshi 
+yes
+okok
+if val3 < 18.5:
 import requests
 from django.conf import settings
 from .models import *
