@@ -4,6 +4,8 @@ yes
 okok
 if val3 < 18.5:
 
+VARSHITHA'S COMMIT  THIS IS MY 3RD COMMIT
+
 Sindhu is doing this commit for the second time
 She is saying hello world
 
@@ -84,20 +86,3 @@ def bmicalc(request):#bmi calculator
         return render(request, 'bmiresult.html', {'result': round(val3), 'age': age, 'gender': gender, 'category': res})
     return render(request, 'bmical.html')
 
-Changes to be made: 
-● Stylize few things
-● add a pop up button in inputsbase.html stating you have not met these requirements
-● Should update unitweight of each item
-● check buttons
-'''
-@login_required
-def user_history(request):
-    user_submissions = UserSubmission.objects.filter(user=request.user).prefetch_related('items')
-    
-    context = {
-        'submissions': user_submissions,
-    }
-    return render(request, 'user_history.html', context)
-@login_required
-def moreinfo(request):
-    return render(request,'optimzerinfo.html')
