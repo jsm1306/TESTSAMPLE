@@ -13,26 +13,12 @@ sINDHU IS MAKING 3RD COMMIT, HELLO GUYS!!
 LETS LEARN CONFLICT MERGES BLAH BLAH
 
 hi guys   chalu edhi
+
+Now this is sindhu's 4th commit, and hello everyone
+i am a so so good girllllll yooo
+
     
-        A = [
-            [-item.calories for item in nutrition_data],
-            [-item.proteins for item in nutrition_data],
-            [-item.fats for item in nutrition_data],
-            [-item.sodium for item in nutrition_data],
-            [-item.fiber for item in nutrition_data],
-            [-item.carbs for item in nutrition_data],
-            [-item.sugar for item in nutrition_data]
-        ]
-
-        b = [-requirements['Calories'], -requirements['Proteins'], -requirements['Fats'],
-             -requirements['Sodium'], -requirements['Fiber'], -requirements['Carbs'], -requirements['Sugar']]
-        c = [item.price for item in nutrition_data]
-        x_bounds = [(0, None) for _ in nutrition_data]
-
-        res = linprog(c, A_ub=A, b_ub=b, bounds=x_bounds, options={"disp": True})
-
-        quantities = res.x 
-        
+       
  
         results = [(item, quantity,item.price) for item, quantity in zip(nutrition_data, quantities)]
 
