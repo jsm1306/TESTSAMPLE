@@ -3,125 +3,20 @@ hello varshi
 yes
 okok
 if val3 < 18.5:
-import requests
-from django.conf import settings
-from .models import *
-from scipy.optimize import linprog
-import numpy as np
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+
 Sindhu is doing this commit for the second time
 She is saying hello world
 
+hello 
 
-
-@login_required(login_url='login')
-def suggester(request):
-    if request.method == "POST":
-        selected_items = []
-        for category, items in request.POST.items():
-            if category.startswith('item_'):
-                selected_items.append(items)  
-
-        nutrition_data = []
-        for item_name in selected_items:
-            try:
-                item = NutritionInfo.objects.get(item_name=item_name)
-                nutrition_data.append(item)
-            except NutritionInfo.DoesNotExist:
-                print(f"Item '{item_name}' does not exist in the database.")
-        requirements = daily(request)
-        A = [
-            [-item.calories for item in nutrition_data],
-            [-item.proteins for item in nutrition_data],
-            [-item.fats for item in nutrition_data],
-            [-item.sodium for item in nutrition_data],
-            [-item.fiber for item in nutrition_data],
-            [-item.carbs for item in nutrition_data],
-            [-item.sugar for item in nutrition_data]
-        ]
-
-        b = [-requirements['Calories'], -requirements['Proteins'], -requirements['Fats'],
-             -requirements['Sodium'], -requirements['Fiber'], -requirements['Carbs'], -requirements['Sugar']]
-        c = [item.price for item in nutrition_data]
-        x_bounds = [(0, None) for _ in nutrition_data]
-
-        res = linprog(c, A_ub=A, b_ub=b, bounds=x_bounds, options={"disp": True})
-
-        quantities = res.x 
-        
- 
-        results = [(item, quantity,item.price) for item, quantity in zip(nutrition_data, quantities)]
-
-        return render(request, 'suggestresult.html', {'results': results})
-
-    return redirect('mains.html')
-
-
-@login_required(login_url='login')
-def score(request):#back button fn in inputsbase.html
-    name = request.session.get('name')  
-    age = request.session.get('age')     
-    nutrition_items = NutritionInfo.objects.values_list('item_name', flat=True)
-    return render(request, 'score.html', {
-        'name': name,
-        'age': age,
-        'nutrition_items': nutrition_items,
-    })
-@login_required(login_url='login')
-def bmicalc(request):#bmi calculator
-    if request.method == "POST":
-        weight = int(request.POST.get('weig', 0))
-        height = int(request.POST.get('heig', 0))
-        age = int(request.POST.get('age', 0))
-        gender = request.POST.get('options', '')
-        if height<=0 or weight<=0:
-            errormsg="Height/Weight should be above zero. Please enter valid inputs."
-            return render(request, 'bmiresult.html', {'error': errormsg, 'age': age, 'gender': gender})
-        if age<0 or age >100:
-            errormsg="Invalid age."
-            return render(request, 'bmiresult.html', {'error': errormsg, 'age': age, 'gender': gender})
-        ht = height/100
-        val3 = weight/(ht**2)
-        if val3 < 18.5:
-            res = "Underweight"
-        elif 18.5 <= val3 < 25:
-            res = "Normal weight"
-        elif 25 <= val3 <= 29.9:
-            res = "Overweight"
-        elif 30 <= val3 <= 34.9:
-            res = "Obesity Class 1"
-        elif 35 <= val3 <= 39.9:
-            res = "Obesity Class 2"
-        elif val3 >= 40:
-            res = "Obesity Class 3"
-        else:
-            res = "Invalid BMI"
-        BMICalculation.objects.create(weight=weight, height=height, bmi_value=val3, gender=gender, category=res)
-        return render(request, 'bmiresult.html', {'result': round(val3), 'age': age, 'gender': gender, 'category': res})
-    return render(request, 'bmical.html')
-
+sINDHU IS MAKING 3RD COMMIT, HELLO GUYS!!
+LETS LEARN CONFLICT MERGES BLAH BLAH
 Changes to be made: 
 ● Stylize few things
 ● add a pop up button in inputsbase.html stating you have not met these requirements
 ● Should update unitweight of each item
 ● check buttons
 '''
-@login_required
-def suggester_view(request):
-    if request.method == 'POST':
-        selected_items = []
-        for category in request.POST:
-            if category.startswith('item_'):
-                selected_item_name = request.POST[category]
-                if selected_item_name:
-                    item = NutritionInfo.objects.get(item_name=selected_item_name)
-                    selected_items.append(item)
-
-        return render(request, 'suggestresult.html', {'results': selected_items})
-
 @login_required
 def user_history(request):
     user_submissions = UserSubmission.objects.filter(user=request.user).prefetch_related('items')
